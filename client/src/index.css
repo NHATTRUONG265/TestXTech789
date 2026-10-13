@@ -1,0 +1,39 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body { 
+    @apply text-gray-800 bg-white; 
+}
+
+@layer components {
+  .img-zoom { @apply overflow-hidden; }
+
+  .img-zoom > img,
+  .img-zoom > .zoom-bg {
+    @apply transition-transform duration-500 ease-out;
+  }
+
+  .img-zoom:hover > img,
+  .img-zoom:hover > .zoom-bg {
+    @apply scale-110;
+  }
+}
+
+@keyframes card-flash {
+  0%   { opacity: 1; transform: scale(1); }
+  100% { opacity: 0; transform: scale(1.06); }
+}
+
+@keyframes float-up {
+  0%   { opacity: 0; transform: translateY(0) scale(0.8); }
+  20%  { opacity: 1; transform: translateY(-8px) scale(1.1); }
+  100% { opacity: 0; transform: translateY(-48px) scale(1); }
+}
+
+.card-flash { animation: card-flash 0.6s ease-out forwards; }
+.plus-one   { animation: float-up 0.9s ease-out forwards; }
+
+@media (prefers-reduced-motion: reduce) {
+  .card-flash, .plus-one { animation: none; opacity: 0; }
+}
