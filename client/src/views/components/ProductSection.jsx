@@ -51,13 +51,13 @@ export default function ProductSection({ products = [] }) {
 
         {/* Khu vực sản phẩm */}
         <div className="min-w-0">
-          {/* Tabs và View All */}
-          <div className="mb-7 flex min-h-[64px] items-end justify-between gap-3">
-            <div className="flex">
+         {/* Tabs và View All */}
+          <div className="mb-5 flex items-end justify-between gap-3 sm:mb-7 sm:min-h-[64px]">
+            <div className="flex min-w-0 flex-1 sm:flex-none">
               <button
                 type="button"
                 onClick={() => setActiveTab('description')}
-                className={`min-w-[140px] border border-gray-200 px-5 py-4 text-[11px] font-semibold ${
+                className={`min-w-0 flex-1 border border-gray-200 px-2 py-3 text-[10px] font-semibold sm:min-w-[140px] sm:flex-none sm:px-5 sm:py-4 sm:text-[11px] ${
                   activeTab === 'description'
                     ? 'border-t-[3px] border-t-[#e5b443] bg-transparent text-gray-800'
                     : 'bg-transparent text-gray-400'
@@ -69,7 +69,7 @@ export default function ProductSection({ products = [] }) {
               <button
                 type="button"
                 onClick={() => setActiveTab('specifications')}
-                className={`min-w-[150px] border border-gray-200 px-4 py-4 text-[11px] font-semibold ${
+                className={`min-w-0 flex-1 border border-gray-200 px-2 py-3 text-[10px] font-semibold sm:min-w-[150px] sm:flex-none sm:px-4 sm:py-4 sm:text-[11px] ${
                   activeTab === 'specifications'
                     ? 'border-t-[3px] border-t-[#e5b443] text-gray-800'
                     : 'text-gray-400'
@@ -79,10 +79,7 @@ export default function ProductSection({ products = [] }) {
               </button>
             </div>
 
-            <a
-              href="/shop"
-              className="mb-3 shrink-0 text-xs text-gray-700 underline"
-            >
+            <a href="/shop" className="mb-3 shrink-0 whitespace-nowrap text-xs text-gray-700 underline">
               View All &gt;&gt;
             </a>
           </div>

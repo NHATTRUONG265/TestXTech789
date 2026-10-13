@@ -11,8 +11,8 @@ export default function NewsCarousel({ items }) {
   const onScroll = () => setActive(Math.round(trackRef.current.scrollLeft / step()));
 
   return (
-    <div>
-      <div className="flex justify-end mb-3">
+  <div className="min-w-0">
+    <div className="flex justify-end mb-3">
         <a href="#" className="text-sm text-gray-900 underline">View All &gt;&gt;</a>
       </div>
 

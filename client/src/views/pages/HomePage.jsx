@@ -103,7 +103,7 @@ export default function HomePage() {
 
       {/* News */}
       <SectionTitle>Nu Skin In The News</SectionTitle>
-      <div className="grid lg:grid-cols-[minmax(0,1fr)_15rem] gap-6 items-stretch">
+      <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,1fr)_15rem] gap-6 items-stretch">
         <NewsCarousel items={news} />
         <div className="img-zoom hidden lg:flex relative flex-col justify-center items-center text-white min-h-[22rem]">
           <div className="zoom-bg absolute inset-0 bg-cover bg-center" style={{ backgroundImage: `url(${img('news', 400, 700)})` }} />
