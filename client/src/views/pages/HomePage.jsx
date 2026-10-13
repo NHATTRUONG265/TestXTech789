@@ -1,4 +1,4 @@
-import { useStore } from '../../controllers/StoreContext.jsx';
+import { useStore } from '../../controllers/useStore.js';
 import { ProductModel } from '../../models/product.model.js';
 import SectionTitle from '../components/SectionTitle.jsx';
 import ProductSection from '../components/ProductSection.jsx';

@@ -5,7 +5,7 @@ export default function ScrollToTopButton({ threshold = 200 }) {
 
   useEffect(() => {
     const onScroll = () => setVisible(window.scrollY > threshold);
-    onScroll(); // kiểm tra ngay khi tải trang
+    onScroll();
     window.addEventListener('scroll', onScroll, { passive: true });
     return () => window.removeEventListener('scroll', onScroll);
   }, [threshold]);
@@ -18,12 +18,13 @@ export default function ScrollToTopButton({ threshold = 200 }) {
       onClick={scrollToTop}
       aria-label="Back to top"
       tabIndex={visible ? 0 : -1}
-      className={`fixed bottom-6 right-4 sm:right-8 z-50 w-10 h-10 sm:w-14 sm:h-14 bg-[#e7c2f2] hover:bg-[#8e4fc9] text-gray-900 flex items-center justify-center shadow-md transition-all duration-300 ${
-        visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4 pointer-events-none'
-      }`}
+      className={`fixed right-4 sm:right-8 z-50 flex h-11 w-11 sm:h-12 sm:w-12 items-center justify-center
+        rounded-xl border border-gray-300 bg-transparent text-gray-700 backdrop-blur-sm
+        bottom-[calc(1rem+env(safe-area-inset-bottom))] sm:bottom-6
+        transition-all duration-300 hover:border-[#5b1765] hover:bg-white/80 hover:text-[#5b1765] active:scale-95
+        ${visible ? 'translate-y-0 opacity-100' : 'pointer-events-none translate-y-4 opacity-0'}`}
     >
-      {/* Icon hai mũi tên lên */}
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3.5" strokeLinecap="round" strokeLinejoin="round">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <polyline points="6 12 12 6 18 12" />
         <polyline points="6 19 12 13 18 19" />
       </svg>

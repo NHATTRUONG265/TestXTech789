@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-import { useStore } from '../../controllers/StoreContext.jsx';
+import { useStore } from '../../controllers/useStore.js';
 
 export default function ProductCard({ product }) {
   const { addToCart } = useStore();

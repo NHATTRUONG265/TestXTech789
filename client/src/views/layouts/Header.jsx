@@ -1,6 +1,6 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { useStore } from '../../controllers/StoreContext.jsx';
+import { useStore } from '../../controllers/useStore.js';
 import { ProductModel } from '../../models/product.model.js';
 import { 
   FaFacebookF, 
@@ -23,23 +23,23 @@ const navLinks = [
 ];
 
 export default function Header() {
-  const { cartCount, submitSearch } = useStore();
-   const { pathname } = useLocation();
+ const { cartCount, submitSearch } = useStore();
+  const { pathname } = useLocation();
+  const { categories } = ProductModel;
   const isHome = pathname === '/';
 
+  const [text, setText] = useState('');
   const [isCategoryOpen, setIsCategoryOpen] = useState(isHome); // desktop: chỉ mở sẵn ở trang Home
   const [isMenuOpen, setIsMenuOpen] = useState(false); // mobile: menu hamburger
-  const [isMobileCatOpen, setIsMobileCatOpen] = useState(false); // mobile: danh mục
+  const [prevPath, setPrevPath] = useState(pathname);
 
-  // Mỗi lần đổi trang: Home thì mở Categories, trang khác thì đóng lại
-  useEffect(() => {
+  // Mỗi lần đổi trang: cập nhật state ngay lúc render (cách React khuyến nghị thay cho effect)
+  if (prevPath !== pathname) {
+    setPrevPath(pathname);
     setIsCategoryOpen(isHome);
     setIsMenuOpen(false);
-    setIsMobileCatOpen(false);
-  }, [pathname, isHome]);
-
-  const [text, setText] = useState('');
-  const { categories } = ProductModel;
+    if (pathname !== '/detail') setText(''); // rời trang kết quả tìm kiếm thì xóa chữ trong ô
+  }
 
   const onSubmit = (e) => {
     e.preventDefault();
@@ -47,7 +47,7 @@ export default function Header() {
   };
 
   const closeMenu = () => setIsMenuOpen(false);
-
+ 
   return (
     <header className="w-full bg-white relative">
       {/* Thanh trên cùng: mobile = nền xanh nhạt, icon căn giữa | desktop = nền tím */}
